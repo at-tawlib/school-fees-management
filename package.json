@@ -5,7 +5,13 @@
   "description": "An app to manage fees payment of students",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "start:watch": "npx electronmon .",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "postinstall": "electron-rebuild"
   },
   "dependencies": {
     "better-sqlite3": "^11.5.0",

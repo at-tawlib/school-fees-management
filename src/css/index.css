@@ -1,0 +1,131 @@
+/* Define color variables in the :root */
+:root {
+  --color-red: #cc0000;
+  --color-red-light: #ff0000;
+  --color-red-dark: #660000;
+  --color-blue: #3498db;
+  --color-green: #38761d;
+  --color-white: #f4f4f4;
+  --text-color: #2c3e50; /* Dark Blue/Grey (same as secondary) */
+  --highlight-color: #e74c3c;
+  --neutral-color: #bdc3c7;
+  --color-yellow: #fc8c05;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+/* Usage
+    background-color: var(--background-color);
+   */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base page styles */
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  list-style-type: none;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+select,
+button {
+  box-sizing: border-box;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  background-image: none;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+.border-none {
+  border: none;
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* *********************** NAV SIDEBAR *************************************** */
+nav {
+  width: 16rem;
+  position: fixed;
+  background-color: var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto; /* Allows sidebar to scroll independently if needed */
+}
+
+nav ul li {
+  padding: 12px;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+/* ****************** MAIN CONTENT *************************** */
+main {
+  width: calc(100% - 16rem);
+  margin-left: 16rem;
+  overflow-y: auto;
+  height: 96vh;
+}
+
+header {
+  padding: 1rem;
+  margin: 1rem 2rem;
+  border-radius: 0.35rem;
+  margin-top: 0;
+  background-color: white;
+  color: var(--color-blue);
+}
+
+.content {
+  margin: 1rem 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.35rem;
+  min-height: 85vh;
+}
