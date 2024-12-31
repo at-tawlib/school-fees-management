@@ -1,0 +1,43 @@
+{
+  "name": "school-fees-management",
+  "productName": "School Fees Management",
+  "version": "1.0.0",
+  "description": "An app to manage fees payment of students",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "dotenv": "^16.4.5",
+    "electron-squirrel-startup": "^1.0.1",
+    "selenium-webdriver": "^4.27.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-deb": "^7.5.0",
+    "@electron-forge/maker-rpm": "^7.5.0",
+    "@electron-forge/maker-squirrel": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
+    "@electron-forge/plugin-fuses": "^7.5.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "33.0.2",
+    "electron-rebuild": "^3.2.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/at-tawlib/school-fees-management.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Abdul-Fatahu Hardi",
+    "email": "azindodev@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/at-tawlib/school-fees-management/issues"
+  },
+  "homepage": "https://github.com/at-tawlib/school-fees-management#readme"
+}
