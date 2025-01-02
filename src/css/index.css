@@ -25,6 +25,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 /* Base page styles */
@@ -75,57 +76,217 @@ button,
   cursor: pointer;
 }
 
-.border-none {
-  border: none;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
-/* Container styles */
-.container {
-  display: flex;
-  height: 100vh;
+td,
+th {
+  padding: 8px;
+  text-align: left;
+  border: 0.1rem solid var(--text-color);
 }
 
-/* *********************** NAV SIDEBAR *************************************** */
-nav {
-  width: 16rem;
-  position: fixed;
+th {
   background-color: var(--color-blue);
+  color: white;
+  font-size: larger;
+}
+
+/* ************************ DISPLAY CSS ********************* */
+.flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-space-between {
   justify-content: space-between;
-  top: 0;
-  bottom: 0;
-  overflow-y: auto; /* Allows sidebar to scroll independently if needed */
+}
+/* *********************** HEADER NAV *************************************** */
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3.5rem;
+  background-color: white;
 }
 
-nav ul li {
-  padding: 12px;
+nav {
+  display: flex;
+  flex-direction: row;
+  margin: 0 1rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav ul li:hover {
+  color: blue;
   cursor: pointer;
-  text-align: left;
-  border-bottom: 1px solid #f4f4f4;
 }
-
 /* ****************** MAIN CONTENT *************************** */
 main {
-  width: calc(100% - 16rem);
-  margin-left: 16rem;
+  margin: 2rem 4rem;
+}
+
+/* ********************** STUDENT CSS *************** */
+#studentsContainer {
+  align-items: start;
+  height: 90vh;
+}
+
+#searchStudentInput {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.studentButtons {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.studentTableContainer {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-height: 100%;
   overflow-y: auto;
-  height: 96vh;
+  scrollbar-width: thin;
 }
 
-header {
-  padding: 1rem;
-  margin: 1rem 2rem;
-  border-radius: 0.35rem;
-  margin-top: 0;
-  background-color: white;
-  color: var(--color-blue);
+.studentButtons button {
+  width: 100%;
+  margin: 1rem 0;
 }
 
-.content {
-  margin: 1rem 2rem;
-  padding: 1rem;
+
+/* *************** Add STUDENT MODAL CSS *********************** */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal content box */
+.modal-container {
+  margin: 15% auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  width: 30rem;
+  text-align: start;
+  animation: fadeIn 0.5s forwards;
+  position: relative;
   background-color: white;
-  border-radius: 0.35rem;
-  min-height: 85vh;
+}
+
+.modal-header {
+  text-align: center;
+}
+
+.modal-content p {
+  padding: 0.8rem;
+}
+
+.modal-btn-group {
+  display: flex;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+/* Close button (X) */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Animation for fading in and out */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+.white-text {
+  color: white;
+}
+
+#addStudentForm {
+  display: block;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  text-align: start;
+  animation: fadeIn 0.5s forwards;
+  position: relative; 
+  padding: 1rem;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.form-item label {
+  width: 30%;
+  font-size: large;
+}
+
+.form-item input {
+  width: 60%;
 }
