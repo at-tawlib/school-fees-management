@@ -10,6 +10,7 @@
     <script type="module" src="../js/students.js" defer></script>
     <script type="module" src="../js/student-modal.js" defer></script>
     <script type="module" src="../js/make-payment-modal.js" defer></script>
+    
   </head>
   <body>
     <!-- --------------- HEADER ------------- -->
@@ -97,6 +98,7 @@
         </div>
       </div>
     </main>
+    <!-- main -->
 
     <!-- Add Student Modal -->
     <div id="addStudentModal" class="modal">
@@ -146,17 +148,19 @@
             <label for="studentClassSelect">Class</label>
             <select id="studentClassSelect" required>
               <option value="" disabled selected>Select Class</option>
-                <option value="Class One">Class One</option>
-                <option value="Class Two">Class Two</option>
-                <option value="Class Three">Class Three</option>
-                <option value="Class Four">Class Four</option>
-                <option value="Class Five">Class Five</option>
-                <option value="Class Six">Class Six</option>
-              </select>
+              <option value="Class One">Class One</option>
+              <option value="Class Two">Class Two</option>
+              <option value="Class Three">Class Three</option>
+              <option value="Class Four">Class Four</option>
+              <option value="Class Five">Class Five</option>
+              <option value="Class Six">Class Six</option>
+            </select>
           </div>
 
           <div class="flex-row">
-            <button id="addStudentModalBtn" type="button" class="btn">Add Student</button>
+            <button id="addStudentModalBtn" type="button" class="btn">
+              Add Student
+            </button>
             <button id="cancelStudentModalBtn" type="button" class="btn">
               Cancel
             </button>
@@ -217,6 +221,8 @@
           </div>
         </form>
       </div>
-    <!-- main -->
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
   </body>
 </html>
