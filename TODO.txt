@@ -1,0 +1,44 @@
+1. User Roles
+    Admin: Can add/edit students and payments, view reports, and manage arrears.
+    Optional: Add roles like Accountant (view-only access).
+
+2. Core Pages
+    Dashboard:
+        Total fees collected.
+        Total arrears.
+        Quick links to add payments or view arrears.
+
+    Student Management:
+        Add/Edit/Delete student records.
+        Search and filter students.
+
+    Payments:
+        Add payment entries with details (date, amount, mode).
+        View payment history.
+
+    Arrears:
+        List of students with unpaid fees.
+        Highlight overdue payments.
+
+    Reports:
+        Generate payment summaries.
+        Export as CSV or PDF.
+
+
+Basic Wireframe Structure
+Dashboard Page:
+    Header: App title and navigation (e.g., Home, Students, Payments).
+    Stats Section: Display total fees collected, arrears, and payment modes.
+    Shortcuts: Buttons for quick actions like “Add Payment” or “View Arrears”.
+
+Student Management Page:
+    Table: List of students with columns for Name, Class, Fees Paid, and Arrears.
+    Actions: Buttons for Add, Edit, and Delete.
+
+Payments Page:
+    Form: Fields for student name, amount, date, and payment mode.
+    History: Table to view past payments.
+
+Arrears Page:
+    List or Table: Highlight overdue payments.
+    Filter: Sort by date, class, or amount.
