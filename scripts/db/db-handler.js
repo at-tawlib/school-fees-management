@@ -57,6 +57,29 @@ class DatabaseHandler {
     return rows.map((row) => row.name);
   }
 
+  insertStudent(student) {
+    try {
+      const stmt = this.db.prepare(`
+            INSERT INTO students ( first_name, middle_name, last_name, class, created_at)
+            VALUES (?, ?, ?, ?, ?)
+        `);
+      stmt.run(
+        student.firstName,
+        student.middleName,
+        student.lastName,
+        student.class,
+        new Date().toISOString()
+      );
+      return {
+        success: true,
+        message: "Student added successfully.",
+      }
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
   // Close the database connection
   close() {
     this.db.close();

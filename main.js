@@ -1,9 +1,10 @@
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain } = require("electron");
 const path = require("path");
 
 const DatabaseHandler = require("./scripts/db/db-handler");
 
 let mainWindow;
+let dbHandler;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -21,10 +22,24 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, "src/html/index.html"));
 }
 
+// Save student
+ipcMain.handle("insert-student", async (_, student) => {
+  try {
+    const result = dbHandler.insertStudent(student);
+
+    if (!result.success) {
+      throw new Error(result.error);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
 // app.whenReady().then(createWindow);
 app.whenReady().then(() => {
   try {
-    new DatabaseHandler();
+    dbHandler = new DatabaseHandler();
     createWindow();
   } catch (error) {
     console.error(error.message);

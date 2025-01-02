@@ -110,51 +110,53 @@
           <div id="studentError" class="error"></div>
 
           <div class="form-item">
-            <label for="firstName">First Name</label>
+            <label for="studentFirstNameInput">First Name</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
+              id="studentFirstNameInput"
+              name="studentFirstNameInput"
               placeholder="Enter firstName"
               required
             />
           </div>
 
           <div class="form-item">
-            <label for="middleName">Middle Name</label>
+            <label for="studentMiddleNameInput">Middle Name</label>
             <input
               type="text"
-              id="middleName"
-              name="middleName"
+              id="studentMiddleNameInput"
+              name="studentMiddleNameInput"
               placeholder="Enter middle name"
               required
             />
           </div>
 
           <div class="form-item">
-            <label for="lastName">Last Name</label>
+            <label for="studentLastNameInput">Last Name</label>
             <input
               type="text"
-              id="lastName"
-              name="lastName"
+              id="studentLastNameInput"
+              name="studentLastNameInput"
               placeholder="Enter lastName"
               required
             />
           </div>
 
           <div class="form-item">
-            <label for="class">Class</label>
-            <input
-              type="text"
-              id="class"
-              name="class"
-              placeholder="Enter class"
-              required
-            />
+            <label for="studentClassSelect">Class</label>
+            <select id="studentClassSelect" required>
+              <option value="" disabled selected>Select Class</option>
+                <option value="Class One">Class One</option>
+                <option value="Class Two">Class Two</option>
+                <option value="Class Three">Class Three</option>
+                <option value="Class Four">Class Four</option>
+                <option value="Class Five">Class Five</option>
+                <option value="Class Six">Class Six</option>
+              </select>
           </div>
 
           <div class="flex-row">
-            <button type="button" class="btn">Add Student</button>
+            <button id="addStudentModalBtn" type="button" class="btn">Add Student</button>
             <button id="cancelStudentModalBtn" type="button" class="btn">
               Cancel
             </button>
