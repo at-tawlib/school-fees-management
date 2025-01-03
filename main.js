@@ -36,6 +36,20 @@ ipcMain.handle("insert-student", async (_, student) => {
   }
 });
 
+// get all students
+ipcMain.handle("get-all-students", async () => {
+  try {
+    const result = dbHandler.getAllStudents();
+
+    if (!result.success) {
+      throw new Error(result.error);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
 // app.whenReady().then(createWindow);
 app.whenReady().then(() => {
   try {

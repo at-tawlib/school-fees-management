@@ -2,12 +2,14 @@ import { studentsList } from "./students_list.js";
 
 let students = studentsList;
 
-document.getElementById("studentsNav").addEventListener("click", () => {
+document.getElementById("studentsNav").addEventListener("click", async () => {
+
+  const studentsRecords = await window.api.getAllStudents();
+  console.log(studentsRecords);
   document.getElementById("studentsContainer").style.display = "flex";
   document.getElementById("dashboardContainer").style.display = "none";
-  console.log(studentsList);
 
-  displayStudents(students);
+  displayStudents(studentsRecords.data);
 });
 
 function displayStudents(students) {
@@ -17,7 +19,7 @@ function displayStudents(students) {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${student.id}</td>
-      <td>${student.name}</td>
+      <td>${student.first_name} ${student.middle_name} ${student.last_name}</td>
       <td>${student.class}</td>
       <td>${student.fees_paid}</td>
       <td>${student.arreas}</td>
@@ -29,12 +31,7 @@ function displayStudents(students) {
 
 function filterStudents() {
   const filter = document.getElementById("searchStudentInput").value;
-
-  const filteredStudents = studentsList.filter((student) => {
-    return student.name.toLowerCase().includes(filter.toLowerCase());
-  });
-  students = filteredStudents;
-  displayStudents(students);
+  // TODO: add logic to filter students
 }
 
 document.getElementById("searchStudentInput").addEventListener("input", filterStudents);
