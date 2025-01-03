@@ -2,7 +2,7 @@
 export function showHideContainer(container) {
   const dashboardContainer = document.getElementById("dashboardContainer");
   const studentsContainer = document.getElementById("studentsContainer");
-  const feesContainer = document.getElementById("feesContainer");
+  const feesContainer = document.getElementById("arrearsContainer");
 
   switch (container) {
     case "dashboard":
