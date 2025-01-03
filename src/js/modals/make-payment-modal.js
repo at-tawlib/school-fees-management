@@ -1,4 +1,4 @@
-import { showToast } from "./utils/toast.js";
+import { showToast } from "../utils/toast.js";
 
 const modal = document.getElementById("makePaymentModal");
 
