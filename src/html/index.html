@@ -9,6 +9,7 @@
     <!-- JS -->
     <script type="module" src="../js/index.js" defer></script>
     <script type="module" src="../js/students.js" defer></script>
+    <script type="module" src="../js/arrears.js" defer></script>
     <script type="module" src="../js/modals/student-modal.js" defer></script>
     <script type="module" src="../js/modals/make-payment-modal.js" defer></script>
     <script type="module" src="../js/modals/add-fees-modal.js" defer></script>
@@ -104,6 +105,68 @@
               </tr>
             </thead>
             <tbody id="studentsListTableBody">
+              <!-- Students List -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ---------------- FEES -------------------- -->
+      <div id="arrearsContainer" class="flex-row" style="display: none">
+        <div class="studentButtons flex-1">
+          <button id="addStudentButton">Add Student</button>
+          <button id="refreshStudentsButton">Refresh</button>
+          <button id="makePaymentButton">Make payment</button>
+          <button>Export</button>
+          <button>Print</button>
+        </div>
+
+        <div class="arrearsTableContainer flex-3">
+          <div class="flex-row align-center">
+            <label for="filterByClass">Filter by class:</label>
+            <select id="filterByClassSelect">
+              <option value="all">All</option>
+              <option value="Class One">Class One</option>
+              <option value="Form 1">Form 1</option>
+              <option value="Form 2">Form 2</option>
+              <option value="Form 3">Form 3</option>
+              <option value="Form 4">Form 4</option>
+            </select>
+
+            <label for="filterByPayment">Filter by payment:</label>
+            <select id="filterByPayment">
+              <option value="all">All</option>
+              <option value="paid">Paid</option>
+              <option value="notPaid">Not Paid</option>
+            </select>
+
+            <label for="sortBy">Sort by:</label>
+            <select id="sortBy">
+              <option value="name">Name</option>
+              <option value="class">Class</option>
+              <option value="paid">Paid</option>
+              <option value="balance">Balance</option>
+            </select>
+          </div>
+
+          <input
+            type="text"
+            id="searchStudentInput"
+            placeholder="Search by name..."
+          />
+          <table>
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Fees</th>
+                <th>Paid</th>
+                <th>Arrears</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="arrearsListTableBody">
               <!-- Students List -->
             </tbody>
           </table>

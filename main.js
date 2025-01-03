@@ -9,8 +9,9 @@ let dbHandler;
 function createWindow() {
   mainWindow = new BrowserWindow({
     title: "School Management System",
-    width: 1200,
+    fullscreen: true,
     height: 800,
+    width: 1200,
     resizable: true,
     webPreferences: {
       nodeIntegration: true,
@@ -67,6 +68,19 @@ ipcMain.handle("make-payment", async (_, data) => {
 ipcMain.handle("add-fees", async (_, data) => {
   try {
     const result = dbHandler.addFees(data);
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
+// Get arrears
+ipcMain.handle("get-arrears", async (_, data) => {
+  try {
+    const result = dbHandler.getArrears(data);
     if (!result.success) {
       throw new Error(result.message);
     }

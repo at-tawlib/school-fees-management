@@ -157,6 +157,27 @@ class DatabaseHandler {
     }
   }
 
+  getArrears() {
+    try {
+      const stmt = this.db.prepare(`
+        SELECT s.id AS student_id, s.first_name, s.middle_name, s.last_name, s.class, SUM(f.amount) AS total_fees, p.total_paid AS total_paid
+        FROM students s
+        JOIN fees f ON f.class = s.class
+        LEFT JOIN (
+          SELECT student_id, term, academic_year,SUM(amount) AS total_paid
+          FROM payments
+          GROUP BY  student_id, term, academic_year
+        ) p ON s.id = p.student_id AND f.term = p.term AND f.academic_year = p.academic_year
+        GROUP BY s.id
+        `);
+      const records = stmt.all();
+      return { success: true, data: records };
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
   // Close the database connection
   close() {
     this.db.close();
