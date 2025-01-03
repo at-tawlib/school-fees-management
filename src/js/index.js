@@ -1,8 +1,9 @@
-document.getElementById("dashboardNav").addEventListener("click", function() {
-    document.getElementById("dashboardContainer").style.display = "flex";
-    document.getElementById("studentsContainer").style.display = "none";
+import { showHideContainer } from "./utils/show-container.js";
+
+document.getElementById("dashboardNav").addEventListener("click", function () {
+    showHideContainer("dashboard");
 });
 
-document.getElementById("addFeesButton").addEventListener("click", function() {
-    document.getElementById("addFeesModal").style.display = "block";
+document.getElementById("addFeesButton").addEventListener("click", function () {
+  document.getElementById("addFeesModal").style.display = "block";
 });
