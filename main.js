@@ -50,6 +50,19 @@ ipcMain.handle("get-all-students", async () => {
   }
 });
 
+// Make payment
+ipcMain.handle("make-payment", async (_, data) => {
+  try {
+    const result = dbHandler.makePayment(data);
+    if (!result.success) {
+      throw new Error(result.error);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
 // app.whenReady().then(createWindow);
 app.whenReady().then(() => {
   try {

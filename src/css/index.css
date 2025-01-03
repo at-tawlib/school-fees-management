@@ -181,7 +181,7 @@ main {
   border-radius: 0.5rem;
   max-height: 100%;
   overflow-y: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 
 .studentButtons button {
@@ -189,7 +189,7 @@ main {
   margin: 1rem 0;
 }
 
-/* *************** Add STUDENT MODAL CSS *********************** */
+/* *************** MODAL CSS *********************** */
 .modal {
   display: none;
   position: fixed;
@@ -206,7 +206,7 @@ main {
   margin: 15% auto;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  width: 30rem;
+  width: 40rem;
   text-align: start;
   animation: fadeIn 0.5s forwards;
   position: relative;
@@ -288,6 +288,19 @@ main {
 
 .form-item input {
   width: 60%;
+}
+
+.form-item select {
+  width: 60%;
+}
+
+/* ******************** PAYMENT MODAL *********************** */
+.payment-name-class {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 /* *********************** TOAST CSS ************************ */
