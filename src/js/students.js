@@ -1,5 +1,3 @@
-import { studentsList } from "./students_list.js";
-
 let currentStudent = null;
 
 document.getElementById("studentsNav").addEventListener("click", async () => {

@@ -28,7 +28,7 @@ ipcMain.handle("insert-student", async (_, student) => {
     const result = dbHandler.insertStudent(student);
 
     if (!result.success) {
-      throw new Error(result.error);
+      throw new Error(result.message);
     }
     return result;
   } catch (error) {
@@ -42,7 +42,7 @@ ipcMain.handle("get-all-students", async () => {
     const result = dbHandler.getAllStudents();
 
     if (!result.success) {
-      throw new Error(result.error);
+      throw new Error(result.message);
     }
     return result;
   } catch (error) {
@@ -55,7 +55,20 @@ ipcMain.handle("make-payment", async (_, data) => {
   try {
     const result = dbHandler.makePayment(data);
     if (!result.success) {
-      throw new Error(result.error);
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
+// Add fees
+ipcMain.handle("add-fees", async (_, data) => {
+  try {
+    const result = dbHandler.addFees(data);
+    if (!result.success) {
+      throw new Error(result.message);
     }
     return result;
   } catch (error) {

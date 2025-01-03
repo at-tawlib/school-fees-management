@@ -116,6 +116,47 @@ class DatabaseHandler {
     }
   }
 
+  feeExists(fee) {
+    const stmt = this.db.prepare(`
+        SELECT 1 FROM fees
+        WHERE class = ? AND term = ? AND academic_year = ?
+        LIMIT 1
+    `);
+
+    const result = stmt.get(fee.class, fee.term, fee.academicYear);
+    return result !== undefined; // Return true if a record exists
+  }
+
+  addFees(data) {
+    try {
+      // Checks if fees exist for the class, term and academic year before adding
+      if (this.feeExists(data)) {
+        return {
+          success: false,
+          message:
+            "Fee already exists for the specified class, term, and academic year.",
+        };
+      }
+      const stmt = this.db.prepare(`
+          INSERT INTO fees (class, academic_year, term, amount, created_at) VALUES (?, ?, ?, ?, ?)
+        `);
+      stmt.run(
+        data.class,
+        data.academicYear,
+        data.term,
+        data.amount,
+        new Date().toISOString()
+      );
+      return {
+        success: true,
+        message: "Fees added successfully.",
+      };
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
   // Close the database connection
   close() {
     this.db.close();
