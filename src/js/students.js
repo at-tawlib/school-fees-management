@@ -1,11 +1,11 @@
+import { showHideContainer } from "./utils/show-container.js";
+
 let currentStudent = null;
 
 document.getElementById("studentsNav").addEventListener("click", async () => {
   const studentsRecords = await window.api.getAllStudents();
-  console.log(studentsRecords);
-  document.getElementById("studentsContainer").style.display = "flex";
-  document.getElementById("dashboardContainer").style.display = "none";
 
+  showHideContainer("students");
   displayStudents(studentsRecords.data);
 });
 
