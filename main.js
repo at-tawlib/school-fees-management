@@ -51,6 +51,21 @@ ipcMain.handle("get-all-students", async () => {
   }
 });
 
+// get students
+ipcMain.handle("get-students", async (_, studentClass) => {
+  try {
+    const result = dbHandler.getStudents(studentClass);
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
+
 // Make payment
 ipcMain.handle("make-payment", async (_, data) => {
   try {
@@ -67,7 +82,20 @@ ipcMain.handle("make-payment", async (_, data) => {
 // Add fees
 ipcMain.handle("add-fees", async (_, data) => {
   try {
-    const result = dbHandler.addFees(data);
+    const result = await dbHandler.addFees(data);
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
+// Attach fees to student
+ipcMain.handle("attach-fees-student", async(_, data) => {
+  try {
+    const result = await dbHandler.attachFeesToStudent(data);
     if (!result.success) {
       throw new Error(result.message);
     }

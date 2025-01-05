@@ -91,6 +91,17 @@ class DatabaseHandler {
     }
   }
 
+  getStudents(studentClass) {
+    try {
+      const stmt = this.db.prepare(`SELECT * FROM students WHERE class = ?`);
+      const records = stmt.all(studentClass);
+      return { success: true, data: records };
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
   makePayment(data) {
     try {
       const stmt = this.db.prepare(`
@@ -150,6 +161,26 @@ class DatabaseHandler {
       return {
         success: true,
         message: "Fees added successfully.",
+      };
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
+  attachFeesToStudent(data) {
+    try {
+      const stmt = this.db.prepare(`
+          INSERT INTO arrears ( student_id, fees_id, created_at ) VALUES ( ?, ?, ?)
+        `);
+      stmt.run(
+        data.studentId,
+        data.feesId,
+        new Date().toISOString()
+      );
+      return {
+        success: true,
+        message: "Fees attached to student successfully.",
       };
     } catch (error) {
       console.error("Database Error: ", error);
