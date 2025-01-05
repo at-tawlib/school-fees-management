@@ -6,6 +6,10 @@ document.getElementById("feesNav").addEventListener("click", async function () {
   displayArrears(records.data);
 });
 
+document.getElementById("addFeesButton").addEventListener("click", function () {
+  document.getElementById("addFeesModal").style.display = "block";
+});
+
 function displayArrears(data) {
   const tableBody = document.getElementById("arrearsListTableBody");
   tableBody.innerHTML = "";
