@@ -92,6 +92,20 @@ ipcMain.handle("add-fees", async (_, data) => {
   }
 });
 
+// get all fees
+ipcMain.handle("get-all-fees", async () => {
+  try {
+    const result = dbHandler.getAllFees();
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    return { success: false, message: error.message };
+  }
+});
+
 // Attach fees to student
 ipcMain.handle("attach-fees-student", async(_, data) => {
   try {

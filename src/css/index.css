@@ -189,12 +189,12 @@ main {
 }
 
 /* *********************** ARREARS CSS */
-#arrearsContainer {
+#feesContainer {
   align-items: start;
   height: 90vh;
 }
 
-.arrearsTableContainer {
+.feesTableContainer {
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;

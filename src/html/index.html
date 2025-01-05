@@ -9,7 +9,7 @@
     <!-- JS -->
     <script type="module" src="../js/index.js" defer></script>
     <script type="module" src="../js/students.js" defer></script>
-    <script type="module" src="../js/arrears.js" defer></script>
+    <script type="module" src="../js/fees.js" defer></script>
     <script type="module" src="../js/modals/student-modal.js" defer></script>
     <script
       type="module"
@@ -84,7 +84,7 @@
               placeholder="Search by name..."
             />
           </div>
-        
+
           <table>
             <thead>
               <tr>
@@ -104,16 +104,17 @@
       </div>
 
       <!-- ---------------- FEES -------------------- -->
-      <div id="arrearsContainer" class="flex-row" style="display: none">
+      <div id="feesContainer" class="flex-row" style="display: none">
         <div class="studentButtons flex-1">
           <button id="addFeesButton">Add Fees</button>
+          <button id="viewFeesButton">View Fees</button>
           <button id="refreshStudentsButton">Refresh</button>
           <button id="makePaymentButton">Make payment</button>
           <button>Export</button>
           <button>Print</button>
         </div>
 
-        <div class="arrearsTableContainer flex-3">
+        <div class="feesTableContainer flex-3">
           <div class="flex-row align-center">
             <label for="filterByClass">Filter by class:</label>
             <select id="filterByClassSelect">
@@ -146,21 +147,9 @@
             id="searchStudentInput"
             placeholder="Search by name..."
           />
-          <table>
-            <thead>
-              <tr>
-                <th>Student ID</th>
-                <th>Name</th>
-                <th>Class</th>
-                <th>Fees</th>
-                <th>Paid</th>
-                <th>Arrears</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="arrearsListTableBody">
-              <!-- Students List -->
-            </tbody>
+          <table id="feesTable">
+            <thead id="feesTableHead"></thead>
+            <tbody id="feesTableBody"></tbody>
           </table>
         </div>
       </div>
