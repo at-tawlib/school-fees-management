@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld("api", {
   makePayment: (data) => ipcRenderer.invoke("make-payment", data),
   addFees: (data) => ipcRenderer.invoke("add-fees", data),
   getAllFees: (data) => ipcRenderer.invoke("get-all-fees", data),
-  attachFeesToStudent: (data) => ipcRenderer.invoke("attach-fees-student", data),
+  getOneFee: (data) => ipcRenderer.invoke("get-one-fee", data),
+  billStudent: (data) => ipcRenderer.invoke("bill-student", data),
   getArrears: (data) => ipcRenderer.invoke("get-arrears", data)
 });

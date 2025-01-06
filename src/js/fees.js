@@ -1,6 +1,10 @@
 import { showHideContainer } from "./utils/show-container.js";
 import { showToast } from "./utils/toast.js";
 
+const feesTable = document.getElementById("feesTable");
+const feesTableHead = document.getElementById("feesTableHead");
+const feesTableBody = document.getElementById("feesTableBody");
+
 document.getElementById("feesNav").addEventListener("click", async function () {
   showHideContainer("fees");
 });
@@ -19,14 +23,11 @@ document
       return;
     }
 
-    const feesTable = document.getElementById("feesTable");
-    const feesTableHead = document.getElementById("feesTableHead");
-    const feesTableBody = document.getElementById("feesTableBody");
     feesTableHead.innerHTML = "";
     feesTableBody.innerHTML = "";
     feesTable.innerHTML = "";
-    
-    const tableHeadRow = document.createElement("tr")
+
+    const tableHeadRow = document.createElement("tr");
     tableHeadRow.innerHTML = `
         <th>Number</th>
         <th>Class</th>
@@ -36,10 +37,10 @@ document
         <th>Actions</th>
     `;
     feesTableHead.appendChild(tableHeadRow);
-    feesTable.appendChild(feesTableHead)
+    feesTable.appendChild(feesTableHead);
 
     // TODO: add filters and search functionality and option to update amount
-    response.data.forEach((record, index)=> {
+    response.data.forEach((record, index) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${index + 1}</td>
@@ -55,12 +56,16 @@ document
           </button>
           </div>
         </td>
-      `
+      `;
       feesTableBody.appendChild(row);
-    })
+    });
 
     feesTable.appendChild(feesTableBody);
   });
+
+document.getElementById("billClassButton").addEventListener("click", () => {
+  document.getElementById("billClassModal").style.display = "block";
+});
 
 function displayArrears(data) {
   const tableBody = document.getElementById("arrearsListTableBody");

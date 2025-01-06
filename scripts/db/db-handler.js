@@ -127,6 +127,19 @@ class DatabaseHandler {
     }
   }
 
+  getOneFee(fee) {
+    try {
+      const stmt = this.db.prepare(`
+          SELECT * FROM fees WHERE class = ? AND term = ? AND academic_year = ?
+        `);
+      const records = stmt.all(fee.class, fee.term, fee.academicYear);
+      return { success: true, data: records };
+    } catch (error) {
+      console.error("Database Error: ", error);
+      return { success: false, message: error.message };
+    }
+  }
+
   feeExists(fee) {
     const stmt = this.db.prepare(`
         SELECT 1 FROM fees
@@ -179,16 +192,33 @@ class DatabaseHandler {
     }
   }
 
-  attachFeesToStudent(data) {
+  // Check whether student has already been billed with the fees in question
+  studentBillExist(data) {
+    const stmt = this.db.prepare(`
+        SELECT 1 FROM arrears
+        WHERE student_id = ? AND fees_id = ? 
+        LIMIT 1
+    `);
+
+    const result = stmt.get(data.studentId, data.feesId);
+    return result !== undefined; // Return true if a record exists
+  }
+
+  billStudent(data) {
     try {
+       // check if student already billed
+       if (this.studentBillExist(data)) {
+        return {
+          success: false,
+          message:
+            "Student has already been billed with this fees"
+        };
+      }
+
       const stmt = this.db.prepare(`
           INSERT INTO arrears ( student_id, fees_id, created_at ) VALUES ( ?, ?, ?)
         `);
-      stmt.run(
-        data.studentId,
-        data.feesId,
-        new Date().toISOString()
-      );
+      stmt.run(data.studentId, data.feesId, new Date().toISOString());
       return {
         success: true,
         message: "Fees attached to student successfully.",
@@ -199,6 +229,7 @@ class DatabaseHandler {
     }
   }
 
+  // TODO: may not be needed
   getArrears() {
     try {
       const stmt = this.db.prepare(`
